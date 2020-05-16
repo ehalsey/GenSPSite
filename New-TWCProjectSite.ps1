@@ -9,6 +9,11 @@ Param(
    [string]$Alias
 )
 
+if (-not (Get-Module -ListAvailable -Name SharePointPnPPowerShellOnline)) {
+    Install-Module SharePointPnPPowerShellOnline
+}
+Import-Module SharePointPnPPowerShellOnline -DisableNameChecking
+
 Connect-PnPOnline -Url $SharePointUrl
 if(!$Alias) {
     $Alias = $ProjectTitle.Replace(" ","-").ToLower()
