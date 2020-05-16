@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.19.2003.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-6230F6AFF9734A2D9A1AD1D2D4CF2330">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-6230F6AFF9734A2D9A1AD1D2D4CF2330" Version="1" BaseSiteTemplate="GROUP#0" Scope="RootSite">
+      <pnp:SiteFields>
+        <Field Type="Text" DisplayName="Condition" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="ThreeWill" ID="{3cce9d1a-40fc-47ad-84f2-a9eaed8330dc}" SourceID="{beb27eb7-37b0-4f40-8ce3-af7d8fbe713d}" StaticName="Condition" Name="Condition" AllowDeletion="TRUE">
+        </Field>
+        <Field Type="Text" DisplayName="Consequence" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="ThreeWill" ID="{17cadee3-e5b2-49a3-860b-90c077031b0f}" SourceID="{beb27eb7-37b0-4f40-8ce3-af7d8fbe713d}" StaticName="Consequence" Name="Consequence" AllowDeletion="TRUE">
+        </Field>
+        <Field ID="{3A8EE3F8-166B-4394-B3E2-E98DCF86A847}" Name="A2ODMountCount" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="A2ODMountCount" Hidden="TRUE" Group="_Hidden" ReadOnly="TRUE" Type="Lookup" List="Docs" ShowField="A2ODMountCount" DisplayName="A2OD Mount Count" FromBaseType="TRUE" DisplaceOnUpgrade="TRUE" FieldRef="ID" JoinColName="DoclibRowId" JoinRowOrdinal="0" JoinType="INNER" />
+        <Field Type="Text" DisplayName="Mitigation" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="JavaScript Display Template Columns" ID="{16a681ff-c968-4fbc-8d16-efa39554c1ce}" SourceID="{beb27eb7-37b0-4f40-8ce3-af7d8fbe713d}" StaticName="Mitigation" Name="Mitigation" AllowDeletion="TRUE">
+        </Field>
+      </pnp:SiteFields>
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x0100A2CA7FEA586BE74C821069B187660C4B" Name="Project Risk" Description="ThreeWill custom for managing project risks." Group="ThreeWill" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" UpdateChildren="true" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
+            <pnp:FieldRef ID="3cce9d1a-40fc-47ad-84f2-a9eaed8330dc" Name="Condition" UpdateChildren="true" />
+            <pnp:FieldRef ID="17cadee3-e5b2-49a3-860b-90c077031b0f" Name="Consequence" UpdateChildren="true" />
+            <pnp:FieldRef ID="16a681ff-c968-4fbc-8d16-efa39554c1ce" Name="Mitigation" UpdateChildren="true" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+      </pnp:ContentTypes>
+      <pnp:Lists>
+        <pnp:ListInstance Title="Risks" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/Risks" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Risks/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Risks/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Risks/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0100A2CA7FEA586BE74C821069B187660C4B" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x01" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{10B57968-8735-4CFC-A936-49DACED79E47}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/Risks/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Condition" />
+                <FieldRef Name="Consequence" />
+                <FieldRef Name="Mitigation" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+              <ViewData />
+            </View>
+          </pnp:Views>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="3cce9d1a-40fc-47ad-84f2-a9eaed8330dc" Name="Condition" DisplayName="Condition" />
+            <pnp:FieldRef ID="17cadee3-e5b2-49a3-860b-90c077031b0f" Name="Consequence" DisplayName="Consequence" />
+            <pnp:FieldRef ID="16a681ff-c968-4fbc-8d16-efa39554c1ce" Name="Mitigation" DisplayName="Mitigation" />
+          </pnp:FieldRefs>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="https://17-southcentralus1.pushp.svc.ms/notifications?token=w3-fe7c4218-8e56-4246-8cb6-b91e0dbf12c2" ExpiresInDays="2" />
+          </pnp:Webhooks>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

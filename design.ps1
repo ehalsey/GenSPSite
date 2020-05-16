@@ -55,3 +55,15 @@ $actoconnRoot = Connect-PnPOnline -Url "https://actodev2.sharepoint.com" -Creden
 New-PnPSite -Type TeamSite -Title "twc-test-05" -alias twc-test-05 -Connection $actoconnRoot
 $actoconn = Connect-PnPOnline -Url "https://actodev2.sharepoint.com/sites/twc-test-05" -Credentials $actocred -ReturnConnection 
 Apply-PnPProvisioningTemplate -Connection $actoconn -Path ".\templates\threewill-challenge-risks-template.pnp"
+
+$actoconn = Connect-PnPOnline -Url "https://actodev2.sharepoint.com/sites/twc-test-04" -Credentials $actocred -ReturnConnection 
+Get-PnPProvisioningTemplate -PersistPublishingFiles -ListsToExtract "Risks" -ContentTypeGroups "ThreeWill" -Connection $actoconn -Out "templates\threewill-challenge-risks-template.pnp"
+
+Get-PnPProvisioningTemplate -Handlers Lists, Fields, ContentTypes -ListsToExtract "Risks" -ContentTypeGroups "ThreeWill" -Connection $actoconn -Out "templates\threewill-challenge-risks-template.xml"
+
+$actoconnRoot = Connect-PnPOnline -Url "https://actodev2.sharepoint.com" -Credentials $actocred -ReturnConnection 
+#adds a group
+New-PnPSite -Type TeamSite -Title "twc-test-01" -alias twc-test-01 -Connection $actoconnRoot
+$actoconn = Connect-PnPOnline -Url "https://actodev2.sharepoint.com/sites/twc-test-012" -Credentials $actocred -ReturnConnection 
+Apply-PnPProvisioningTemplate -Connection $actoconn -Path ".\templates\threewill-challenge-risks-template.xml"
+
